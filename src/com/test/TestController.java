@@ -17,8 +17,7 @@ public class TestController extends AbstractController{
 		int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 		String message;
 		if(hour >= 6 && hour <= 8){
-			message = "일어나세요 !!";
-			
+			message = "일어나세요 !!";			
 		}else if(hour > 8 && hour <= 13){
 			message = "늦었습니다 !!";
 		}else if(hour > 13 && hour <= 14){

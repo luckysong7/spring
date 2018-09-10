@@ -51,8 +51,8 @@ public class MemController extends AbstractWizardFormController {
 			if(mem.getSsn().equals("1234")){
 				
 				String str = mem.getName() + "님 이미 가입되셨습니다.";				
-				//error 객체가 데이터를 가지고 있으면
-				//다음 페이지로 안넘어감
+				// error 객체가 데이터를 가지고 있으면
+				// 다음 페이지로 안넘어감
 				errors.rejectValue("message", str);
 				mem.setMessage(str);
 			}

@@ -35,7 +35,6 @@ public class LoginController extends SimpleFormController{
 			
 			request.setAttribute("message", message);
 			
-			
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			return showForm(request, response, errors);

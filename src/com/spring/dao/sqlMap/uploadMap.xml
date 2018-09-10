@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+<sqlMap namespace="upload">
+	<!-- 파일의 최대 번호 가져오기 -->
+	<select id="getMaxNum" resultClass="int">
+		select nvl(max(num),0) from fileUpload;
+	</select>
+	
+	<!-- 데이터 개수 가져오기 -->
+	<select id="getDataCount" resultClass="int">
+		select nvl(count(*),0) from fileUpload;
+	</select>
+	
+	<!-- 파일 업로드 -->
+	<insert id="insertData" parameterClass="com.upload.UploadCommand">
+		insert into fileUpload(num, subject, originalFileName) 
+		values(#num#, #subject#, #originalFileName#)
+	</insert>
+	
+	
+	<!-- 파일 한개의 정보 가져오기 -->
+	<select id="getReadData" parameterClass="int">
+		select num, subject, originalFileName from fileUpload 
+		where num = #num#
+	</select>
+	
+	<!-- 모든 파일 데이터 가져오기 -->
+	<select id="getList" parameterClass="map" resultClass="com.upload.UploadCommand">
+		select * from (
+		select rownum rnum, data.* from (
+		select num, subject, originalFileName from fileUpload 
+		order by num desc) data)
+		<![CDATA[
+		where rnum >= #start# and rnum <= #end#
+		]]>
+	</select>
+	
+	
+	<!-- 파일 삭제 -->
+	<delete id="deleteData" parameterClass="int">
+		delete fileUpload where num = #num#
+	</delete>
+	
+</sqlMap>

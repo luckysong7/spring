@@ -23,7 +23,18 @@
 p:alwaysUseFullPath="true">
 <!-- 1순위로 -->
 	<property name="order" value="1"/>
+</bean>
 
+<!-- 파일 업로드 -->
+<bean name = "/upload/upload.action" class = "upload.UploadFormController" 
+p:commandClass="upload.UploadCommand" 
+p:commandName="uploadCommand" 
+p:successView ="upload/uploadSuccess" 
+p:formView ="upload/uploadForm"/>
+
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<property name="defaultEncoding" value="UTF-8"/>
+	<property name="maxUploadSize" value ="10000000"/>
 </bean>
 
 <bean id = "beanNameUrlMapping" class ="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
@@ -38,9 +49,9 @@ p:alwaysUseFullPath="true">
 		<props>
 			<prop key = "/test/write.action">listFormController</prop>
 			<prop key = "/test/write_ok.action">listController</prop>
-			<prop key="/test1/login.action">testLoginController</prop>
-			<prop key="/test2/mem.action">testMemController</prop>
-			<prop key="/multi/*.action">multiTestController</prop>
+			<prop key = "/test1/login.action">testLoginController</prop>
+			<prop key = "/test2/mem.action">testMemController</prop>
+			<prop key = "/multi/*.action">multiTestController</prop>
 		</props>
 	</property>
 </bean>
@@ -80,4 +91,4 @@ p:alwaysUseFullPath="true">
 	<property name="methodNameResolver" ref = "propsResolver"></property>
 </bean>
 
- </beans>  
+</beans>  

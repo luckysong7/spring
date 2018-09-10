@@ -10,5 +10,6 @@
     cacheModelsEnabled="false"
     useStatementNamespaces="true"/>
 
-  <sqlMap resource="com/spring/dao/sqlMap/tempMap.xml"/>
+  <sqlMap resource="com/spring/dao/sqlMap/bbsMap.xml"/>
+  <sqlMap resource="com/spring/dao/sqlMap/uploadMap.xml"/>
 </sqlMapConfig>

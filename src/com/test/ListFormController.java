@@ -14,6 +14,4 @@ public class ListFormController implements Controller{
 		return new ModelAndView("test/write");
 	}
 
-	
-	
 }
